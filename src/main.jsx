@@ -141,7 +141,7 @@ function Philosophy() {
 
 function ProblemSolution() {
   return (
-    <section className="problem section-band soft">
+    <section className="problem section-band white-band">
       <div className="two-column reveal">
         <div>
           <p className="eyebrow">The problem</p>
@@ -163,7 +163,10 @@ function ProblemSolution() {
 
 function FeatureSplit({ feature, flip }) {
   return (
-    <section id={feature.visual === 'good' ? 'features' : undefined} className={`feature section-band ${flip ? 'flip' : ''}`}>
+    <section
+      id={feature.visual === 'good' ? 'features' : undefined}
+      className={`feature section-band ${flip ? 'flip' : ''} ${feature.visual === 'good' || feature.visual === 'progress' ? 'gray-band' : 'white-band'}`}
+    >
       <div className="feature-copy reveal">
         <p className="eyebrow">{feature.kicker}</p>
         <h2>{feature.title}</h2>
@@ -264,7 +267,7 @@ function ReminderRow({ time, label }) {
 
 function FeatureGrid() {
   return (
-    <section className="grid-section section-band">
+    <section className="grid-section section-band gray-band">
       <div className="section-heading reveal">
         <p className="eyebrow">Designed for everyday consistency</p>
         <h2>Simple where it should be. Capable where it matters.</h2>
@@ -295,7 +298,7 @@ function SocialProof() {
 
 function Faq() {
   return (
-    <section id="faq" className="faq section-band soft">
+    <section id="faq" className="faq section-band gray-band">
       <div className="section-heading reveal">
         <p className="eyebrow">FAQ</p>
         <h2>Everything important, kept clear.</h2>

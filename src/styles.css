@@ -29,9 +29,7 @@
 body {
   margin: 0;
   min-width: 320px;
-  background:
-    radial-gradient(circle at top left, rgba(255, 180, 92, 0.28), transparent 34rem),
-    linear-gradient(180deg, #fffaf2 0%, var(--cream) 38%, var(--light) 100%);
+  background: #fff;
 }
 
 a {
@@ -98,6 +96,9 @@ nav a:hover {
   align-items: center;
   min-height: 100vh;
   padding-top: 118px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 180, 92, 0.28), transparent 34rem),
+    linear-gradient(180deg, #fffaf2 0%, var(--cream) 48%, var(--light) 100%);
 }
 
 .hero::before {
@@ -373,6 +374,14 @@ p {
   background: rgba(255, 230, 199, 0.34);
 }
 
+.white-band {
+  background: #fff;
+}
+
+.gray-band {
+  background: #f4f4f2;
+}
+
 .two-column,
 .feature {
   display: grid;
@@ -554,7 +563,7 @@ p {
 
 .quote-band {
   padding: 0 clamp(20px, 7vw, 110px) clamp(86px, 14vh, 170px);
-  background: var(--light);
+  background: #fff;
 }
 
 .quote-inner {
@@ -604,6 +613,9 @@ details p {
 
 .final-cta {
   text-align: center;
+  background:
+    radial-gradient(circle at top left, rgba(255, 180, 92, 0.28), transparent 34rem),
+    linear-gradient(180deg, #fffaf2 0%, var(--cream) 48%, var(--light) 100%);
 }
 
 .final-copy {
@@ -611,6 +623,10 @@ details p {
   justify-items: center;
   max-width: 800px;
   margin: 0 auto;
+}
+
+.final-copy h2 {
+  color: var(--ink);
 }
 
 .final-copy img {
@@ -621,7 +637,7 @@ details p {
 
 .final-copy p {
   margin-bottom: 34px;
-  color: rgba(255, 250, 242, 0.74);
+  color: #4f4940;
 }
 
 footer {
@@ -631,7 +647,7 @@ footer {
   gap: 20px;
   padding: 34px clamp(20px, 7vw, 110px);
   color: rgba(255, 250, 242, 0.76);
-  background: var(--dark);
+  background: #000;
 }
 
 footer .brand span {

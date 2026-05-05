@@ -150,6 +150,10 @@ h3 {
   line-height: 1.15;
 }
 
+.accent-text {
+  color: var(--accent);
+}
+
 p {
   color: var(--muted);
   font-size: 18px;

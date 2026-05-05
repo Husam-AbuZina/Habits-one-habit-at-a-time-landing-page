@@ -5,25 +5,25 @@ import './styles.css';
 const features = [
   {
     kicker: 'Build or break',
-    title: 'Grow the routines you want. Leave old patterns behind.',
+    title: <><span className="accent-text">Grow</span> the routines you want. Leave old patterns behind.</>,
     text: 'Track habits you want to build and habits you want to break with the same simple, steady flow.',
     visual: 'good',
   },
   {
     kicker: 'Gentle reminders',
-    title: 'A nudge at the right time, never a noisy system.',
+    title: <>A nudge at the <span className="accent-text">right time</span>, never a noisy system.</>,
     text: 'Set multiple reminder times, choose your rhythm, and keep the app supportive instead of stressful.',
     visual: 'reminders',
   },
   {
     kicker: 'Progress that feels human',
-    title: 'See streaks, trends, history, and small wins add up.',
+    title: <>See <span className="accent-text">streaks</span>, trends, history, and small wins add up.</>,
     text: 'Completion counts, current streaks, longest streaks, and visual trends help you notice momentum.',
     visual: 'progress',
   },
   {
     kicker: 'Personal by design',
-    title: 'Make every habit feel like yours.',
+    title: <>Make every habit feel <span className="accent-text">like yours</span>.</>,
     text: 'Customize names, icons, emoji, colors, goals, units, repeat modes, and notes for each habit.',
     visual: 'style',
   },
@@ -145,7 +145,7 @@ function ProblemSolution() {
       <div className="two-column reveal">
         <div>
           <p className="eyebrow">The problem</p>
-          <h2>Most habit apps feel too loud to live with.</h2>
+          <h2>Most <span className="accent-text">habit apps</span> feel too loud to live with.</h2>
         </div>
         <div className="copy-stack">
           <p>
@@ -270,7 +270,7 @@ function FeatureGrid() {
     <section className="grid-section section-band gray-band">
       <div className="section-heading reveal">
         <p className="eyebrow">Designed for everyday consistency</p>
-        <h2>Simple where it should be. Capable where it matters.</h2>
+        <h2>Simple where it should be. Capable where <span className="accent-text">it matters</span>.</h2>
       </div>
       <div className="feature-grid">
         {gridFeatures.map(([title, text], index) => (

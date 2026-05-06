@@ -1,11 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
-
-const logoSrc = `${import.meta.env.BASE_URL}habits-logo.png`;
-const homeHref = import.meta.env.BASE_URL;
-const sectionHref = (id) => `${homeHref}#${id}`;
-const pageHref = (path) => `${homeHref}${path}`;
 
 const features = [
   {
@@ -44,13 +39,15 @@ const faqs = [
 ];
 
 function App() {
-  const path = window.location.pathname.replace(/\/$/, '');
+  useScrollReveal();
 
-  if (path.endsWith('/privacy-policy')) {
+  const path = window.location.pathname;
+
+  if (path === '/privacy-policy') {
     return <PrivacyPolicyPage />;
   }
 
-  if (path.endsWith('/terms-conditions')) {
+  if (path === '/terms-conditions') {
     return <TermsConditionsPage />;
   }
 
@@ -72,19 +69,69 @@ function App() {
   );
 }
 
+function useScrollReveal() {
+  useEffect(() => {
+    const revealElements = document.querySelectorAll('.reveal');
+
+    if (!revealElements.length) {
+      return undefined;
+    }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      revealElements.forEach((element) => element.classList.add('is-visible'));
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.16,
+        rootMargin: '0px 0px -8% 0px',
+      },
+    );
+
+    revealElements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
+}
+
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
-    <header className="navbar">
-      <a className="brand" href={homeHref} aria-label="Habits home">
-        <img src={logoSrc} alt="" />
+    <header className={`navbar ${menuOpen ? 'menu-open' : ''}`}>
+      <a className="brand" href="/" aria-label="Habits home">
+        <img src="/habits-logo.png" alt="" />
         <span>Habits</span>
       </a>
-      <nav aria-label="Primary navigation">
-        <a href={sectionHref('how')}>How it works</a>
-        <a href={sectionHref('features')}>Features</a>
-        <a href={sectionHref('faq')}>FAQ</a>
-        <a href={pageHref('privacy-policy')}>Privacy policy</a>
-        <a href={pageHref('terms-conditions')}>Terms of use</a>
+      <button
+        className="menu-toggle"
+        type="button"
+        aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+        aria-controls="primary-navigation"
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen((open) => !open)}
+      >
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="primary-navigation" className="nav-links" aria-label="Primary navigation">
+        <a href="#how" onClick={closeMenu}>How it works</a>
+        <a href="#features" onClick={closeMenu}>Features</a>
+        <a href="#faq" onClick={closeMenu}>FAQ</a>
+        <a href="/privacy-policy" onClick={closeMenu}>Privacy policy</a>
+        <a href="/terms-conditions" onClick={closeMenu}>Terms of use</a>
       </nav>
     </header>
   );
@@ -100,13 +147,13 @@ function Hero() {
           A calm, beautifully simple habit tracker designed to help you stay consistent without overwhelm.
         </p>
         <div className="actions">
-          <a className="button primary" href={sectionHref('download')}>Get Started</a>
-          <a className="button secondary" href={sectionHref('how')}>See How It Works</a>
+          <a className="button primary" href="#download">Get Started</a>
+          <a className="button secondary" href="#how">See How It Works</a>
         </div>
       </div>
       <div className="hero-visual reveal delay">
         <div className="sun-mark">
-          <img src={logoSrc} alt="" />
+          <img src="/habits-logo.png" alt="" />
         </div>
         <PhoneMockup variant="home" />
         <div className="mini-card streak-card">
@@ -313,32 +360,14 @@ function Faq() {
   );
 }
 
-function Contact() {
-  return (
-    <section id="contact" className="contact-section section-band white-band">
-      <div className="contact-card reveal">
-        <div>
-          <p className="eyebrow">Contact me</p>
-          <h2>Have a question about Habits?</h2>
-          <p>
-            Send a message anytime. I’ll be happy to help with feedback, support, or anything you want to ask about
-            the app.
-          </p>
-        </div>
-        <a className="contact-email" href="mailto:example@gmail.com">example@gmail.com</a>
-      </div>
-    </section>
-  );
-}
-
 function FinalCta() {
   return (
     <section id="download" className="final-cta dark-band">
       <div className="final-copy reveal">
-        <img src={logoSrc} alt="" />
+        <img src="/habits-logo.png" alt="" />
         <h2>Start building consistency today.</h2>
         <p>One small action. One calm check-in. One habit at a time.</p>
-        <a className="button primary light" href={sectionHref('top')}>Get Started</a>
+        <a className="button primary light" href="#top">Get Started</a>
       </div>
     </section>
   );
@@ -347,13 +376,13 @@ function FinalCta() {
 function Footer() {
   return (
     <footer>
-      <a className="brand" href={homeHref} aria-label="Habits home">
-        <img src={logoSrc} alt="" />
+      <a className="brand" href="/" aria-label="Habits home">
+        <img src="/habits-logo.png" alt="" />
         <span>Habits</span>
       </a>
       <div className="footer-links">
-        <a href={pageHref('privacy-policy')}>Privacy policy</a>
-        <a href={pageHref('terms-conditions')}>Terms and conditions</a>
+        <a href="/privacy-policy">Privacy policy</a>
+        <a href="/terms-conditions">Terms and conditions</a>
       </div>
     </footer>
   );
@@ -362,11 +391,11 @@ function Footer() {
 function LegalHeader() {
   return (
     <header className="legal-nav">
-      <a className="brand" href={homeHref} aria-label="Back to Habits home">
-        <img src={logoSrc} alt="" />
+      <a className="brand" href="/" aria-label="Back to Habits home">
+        <img src="/habits-logo.png" alt="" />
         <span>Habits</span>
       </a>
-      <a href={homeHref} className="legal-back">Go back to home</a>
+      <a href="/" className="legal-back">Go back to home</a>
     </header>
   );
 }
@@ -436,11 +465,11 @@ function PrivacyPolicyPage() {
         <h2>4. Contact</h2>
         <p>
           If you have any questions about this privacy policy, feel free to contact us at{' '}
-          <a href="mailto:example@gmail.com">example@gmail.com</a>. If you email us, we may keep your message
+          <a href="mailto:husamzinap@gmail.com">husamzinap@gmail.com</a>. If you email us, we may keep your message
           long enough to reply and provide support. We will not use your email for marketing without your permission.
         </p>
 
-        <a href={homeHref} className="legal-home-link">Go back to home</a>
+        <a href="/" className="legal-home-link">Go back to home</a>
       </article>
     </main>
   );
@@ -526,10 +555,10 @@ function TermsConditionsPage() {
         <h2>9. Contact</h2>
         <p>
           If you have any questions or concerns, feel free to contact us at{' '}
-          <a href="mailto:example@gmail.com">example@gmail.com</a>.
+          <a href="mailto:husamzinap@gmail.com">husamzinap@gmail.com</a>.
         </p>
 
-        <a href={homeHref} className="legal-home-link">Go back to home</a>
+        <a href="/" className="legal-home-link">Go back to home</a>
       </article>
     </main>
   );

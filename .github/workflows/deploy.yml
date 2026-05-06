@@ -40,6 +40,7 @@ jobs:
           mkdir -p dist/privacy-policy dist/terms-conditions
           cp dist/index.html dist/privacy-policy/index.html
           cp dist/index.html dist/terms-conditions/index.html
+          perl -pi -e 's#href="\./habits-logo\.png"#href="../habits-logo.png"#g; s#src="\./assets/#src="../assets/#g; s#href="\./assets/#href="../assets/#g' dist/privacy-policy/index.html dist/terms-conditions/index.html
           cp dist/index.html dist/404.html
 
       - name: Upload artifact

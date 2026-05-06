@@ -10,12 +10,6 @@ const features = [
     visual: 'good',
   },
   {
-    kicker: 'Gentle reminders',
-    title: <>A nudge at the <span className="accent-text">right time</span>, never a noisy system.</>,
-    text: 'Set multiple reminder times, choose your rhythm, and keep the app supportive instead of stressful.',
-    visual: 'reminders',
-  },
-  {
     kicker: 'Progress that feels human',
     title: <>See <span className="accent-text">streaks</span>, trends, history, and small wins add up.</>,
     text: 'Completion counts, current streaks, longest streaks, and visual trends help you notice momentum.',
@@ -41,7 +35,6 @@ const gridFeatures = [
 const faqs = [
   ['Is Habits only for building good habits?', 'No. You can build habits and break habits, with calm tracking for both.'],
   ['Does it support Arabic?', 'Yes. Habits is designed for English and Arabic users.'],
-  ['Can I set reminders?', 'Yes. You can turn reminders on and add multiple reminder times.'],
   ['Does it sync?', 'The app includes Google sign-in, Apple sign-in, backup, and sync flows.'],
 ];
 

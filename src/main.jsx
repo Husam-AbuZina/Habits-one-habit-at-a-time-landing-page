@@ -325,7 +325,7 @@ function Contact() {
             the app.
           </p>
         </div>
-        <a className="contact-email" href="mailto:husamzinap@gmail.com">husamzinap@gmail.com</a>
+        <a className="contact-email" href="mailto:example@gmail.com">example@gmail.com</a>
       </div>
     </section>
   );
@@ -436,7 +436,7 @@ function PrivacyPolicyPage() {
         <h2>4. Contact</h2>
         <p>
           If you have any questions about this privacy policy, feel free to contact us at{' '}
-          <a href="mailto:husamzinap@gmail.com">husamzinap@gmail.com</a>. If you email us, we may keep your message
+          <a href="mailto:example@gmail.com">example@gmail.com</a>. If you email us, we may keep your message
           long enough to reply and provide support. We will not use your email for marketing without your permission.
         </p>
 
@@ -526,7 +526,7 @@ function TermsConditionsPage() {
         <h2>9. Contact</h2>
         <p>
           If you have any questions or concerns, feel free to contact us at{' '}
-          <a href="mailto:husamzinap@gmail.com">husamzinap@gmail.com</a>.
+          <a href="mailto:example@gmail.com">example@gmail.com</a>.
         </p>
 
         <a href={homeHref} className="legal-home-link">Go back to home</a>

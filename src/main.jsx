@@ -502,7 +502,7 @@ function TermsConditionsPage() {
       <article className="legal-document">
         <p className="eyebrow">Terms</p>
         <h1>Terms and conditions</h1>
-        <p className="legal-date">Effective date: June 5, 2025</p>
+        <p className="legal-date">Effective date: June 5, 2026</p>
         <p>
           Welcome to Habits: one habit at a time. These Terms and conditions explain the rules for using our app,
           related features, and website ("Services").

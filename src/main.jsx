@@ -313,6 +313,24 @@ function Faq() {
   );
 }
 
+function Contact() {
+  return (
+    <section id="contact" className="contact-section section-band white-band">
+      <div className="contact-card reveal">
+        <div>
+          <p className="eyebrow">Contact me</p>
+          <h2>Have a question about Habits?</h2>
+          <p>
+            Send a message anytime. I’ll be happy to help with feedback, support, or anything you want to ask about
+            the app.
+          </p>
+        </div>
+        <a className="contact-email" href="mailto:husamzinap@gmail.com">husamzinap@gmail.com</a>
+      </div>
+    </section>
+  );
+}
+
 function FinalCta() {
   return (
     <section id="download" className="final-cta dark-band">

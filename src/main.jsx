@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
@@ -68,18 +68,32 @@ function App() {
 }
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
-    <header className="navbar">
+    <header className={`navbar ${menuOpen ? 'menu-open' : ''}`}>
       <a className="brand" href="/" aria-label="Habits home">
         <img src="/habits-logo.png" alt="" />
         <span>Habits</span>
       </a>
-      <nav aria-label="Primary navigation">
-        <a href="#how">How it works</a>
-        <a href="#features">Features</a>
-        <a href="#faq">FAQ</a>
-        <a href="/privacy-policy">Privacy policy</a>
-        <a href="/terms-conditions">Terms of use</a>
+      <button
+        className="menu-toggle"
+        type="button"
+        aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+        aria-controls="primary-navigation"
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen((open) => !open)}
+      >
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="primary-navigation" className="nav-links" aria-label="Primary navigation">
+        <a href="#how" onClick={closeMenu}>How it works</a>
+        <a href="#features" onClick={closeMenu}>Features</a>
+        <a href="#faq" onClick={closeMenu}>FAQ</a>
+        <a href="/privacy-policy" onClick={closeMenu}>Privacy policy</a>
+        <a href="/terms-conditions" onClick={closeMenu}>Terms of use</a>
       </nav>
     </header>
   );

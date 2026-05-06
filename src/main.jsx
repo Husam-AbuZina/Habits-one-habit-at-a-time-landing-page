@@ -427,7 +427,7 @@ function PrivacyPolicyPage() {
       <article className="legal-document">
         <p className="eyebrow">Privacy</p>
         <h1>Privacy policy</h1>
-        <p className="legal-date">Last updated: June 5, 2025</p>
+        <p className="legal-date">Last updated: Jan 7, 2026</p>
         <p>
           Your habits are personal. This Privacy Policy explains how Habits: one habit at a time handles information
           across the app and this website.
@@ -502,7 +502,7 @@ function TermsConditionsPage() {
       <article className="legal-document">
         <p className="eyebrow">Terms</p>
         <h1>Terms and conditions</h1>
-        <p className="legal-date">Effective date: June 5, 2026</p>
+        <p className="legal-date">Effective date: Jan 7, 2026</p>
         <p>
           Welcome to Habits: one habit at a time. These Terms and conditions explain the rules for using our app,
           related features, and website ("Services").

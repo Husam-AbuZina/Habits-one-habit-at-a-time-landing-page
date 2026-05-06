@@ -2,8 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
-const logoSrc = `${import.meta.env.BASE_URL}habits-logo.png`;
-const homeHref = import.meta.env.BASE_URL;
+const getBaseHref = () => {
+  const viteBase = import.meta.env.BASE_URL;
+  const githubPagesPath = '/Habits-one-habit-at-a-time-landing-page/';
+
+  if (viteBase && viteBase !== './') {
+    return viteBase;
+  }
+
+  if (window.location.pathname.includes(githubPagesPath)) {
+    return githubPagesPath;
+  }
+
+  return './';
+};
+
+const homeHref = getBaseHref();
+const logoSrc = `${homeHref}habits-logo.png`;
 const sectionHref = (id) => `${homeHref}#${id}`;
 const pageHref = (path) => `${homeHref}${path}`;
 
